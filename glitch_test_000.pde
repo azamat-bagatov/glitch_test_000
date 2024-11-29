@@ -1,5 +1,7 @@
 PImage img;
 
+String BUILD = "0.01";
+
 void setup() {
   size(640, 320);
   img = loadImage("onecru-l.jpg");  // Load the image into the program  
@@ -9,7 +11,7 @@ void setup() {
 }
 
 void draw() {
-  displace();
+
 }
 
 void displace(){
@@ -32,8 +34,26 @@ void displace(){
   
 }
 
+void horizontal_slicer(){
+  color background = color(255);
+  
+  noStroke();
+  fill(background);
+  int posY = 0; 
+  while( posY < height){
+    int step = (int)random(2,40);
+    int shift = (int)random(-50,50);
+    PImage rect = img.get(0,posY,width,step);
+    image(rect,shift,posY);
+    if(shift < 0) rect(width-shift,posY,shift,step);
+    else rect(0,posY,shift,step);
+    posY+=step;
+  }
+}
+
 void keyPressed(){
-  if (key == 'q') displace();
+  if (key == 'd') displace();
+  if (key == 'h') horizontal_slicer();
   if( key == 'e') image(img, 0, 0);
-  if( key == 's') save(millis() + ".jpg");
+  if( key == 's') save(BUILD + millis() + ".jpg");
 }
