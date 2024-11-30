@@ -1,6 +1,6 @@
 PImage img;
 
-String BUILD = "0.01";
+String BUILD = "b.01";
 
 void setup() {
   size(640, 320);
@@ -12,6 +12,17 @@ void setup() {
 }
 
 void draw() {
+  background(10);
+  image(img, 0, 0);
+  int Amplitude = 20;
+  float period = 6*sin(frameCount/10);
+  float glitch_pw = Amplitude*sin( (float)frameCount/period) + 10;
+  
+for(int i = 0; i < abs( (int) glitch_pw); i++){
+  displace();
+}
+
+delay(100);
 
 }
 
