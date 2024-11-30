@@ -4,8 +4,9 @@ String BUILD = "0.01";
 
 void setup() {
   size(640, 320);
-  img = loadImage("onecru-l.jpg");  // Load the image into the program  
-  //img.resize(640,320);
+  //img = loadImage("onecru-l.jpg");  
+  img = loadImage("crypt_onecru.jpg");  
+  img.resize(640,320);
   image(img, 0, 0);
 
 }
@@ -35,14 +36,14 @@ void displace(){
 }
 
 void horizontal_slicer(){
-  color background = color(255);
+  color background = color(20);
   
   noStroke();
   fill(background);
   int posY = 0; 
   while( posY < height){
-    int step = (int)random(2,40);
-    int shift = (int)random(-50,50);
+    int step = (int)random(2,80);
+    int shift = int(random(-50,50));
     PImage rect = img.get(0,posY,width,step);
     image(rect,shift,posY);
     if(shift < 0) rect(width-shift,posY,shift,step);
@@ -53,7 +54,7 @@ void horizontal_slicer(){
 
 void keyPressed(){
   if (key == 'd') displace();
-  if (key == 'h') horizontal_slicer();
+  if (key == 'h') {horizontal_slicer(); delay(30);}
   if( key == 'e') image(img, 0, 0);
-  if( key == 's') save(BUILD + millis() + ".jpg");
+  if( key == 's') save(BUILD + " |"+ millis() + ".jpg");
 }
