@@ -1,29 +1,23 @@
 PImage img;
 
-String BUILD = "b.01";
+String BUILD = "b.02";
 
 void setup() {
   size(640, 320);
-  //img = loadImage("onecru-l.jpg");  
-  img = loadImage("crypt_onecru.jpg");  
+  img = loadImage("onecru-l.jpg");  
+  //img = loadImage("crypt_onecru.jpg");  
   img.resize(640,320);
   image(img, 0, 0);
 
 }
 
 void draw() {
-  background(10);
-  image(img, 0, 0);
-  int Amplitude = 20;
-  float period = 6*sin(frameCount/10);
-  float glitch_pw = Amplitude*sin( (float)frameCount/period) + 10;
-  
-for(int i = 0; i < abs( (int) glitch_pw); i++){
-  displace();
+
+
 }
 
-delay(100);
-
+void corrosion(){
+  
 }
 
 void displace(){
