@@ -1,6 +1,6 @@
 PImage img;
 
-String BUILD = "b.02";
+String BUILD = "c.01";
 
 void setup() {
   size(640, 320);
@@ -12,11 +12,30 @@ void setup() {
 }
 
 void draw() {
-
+corrosion();
 
 }
 
 void corrosion(){
+  float weight_matrix[][] = {
+    {0,  0,  0.25},
+    {0,  0,  0.5},
+    {0.25,  0.5  ,1}
+  };
+  //start at pixel
+  int posX = (int) random(0,width);
+  int posY = (int) random(0,height);
+  color col = img.get(posX,posY);
+  //spread in a weighted random direction until random stop
+  while(random(0,100) < 95){
+    //move point at random
+    posX += (int) random(-2,2);
+    posY += (int) random(-2,2);
+    //draw point
+    stroke(col);
+    point(posX,posY);
+    
+  }
   
 }
 
@@ -61,5 +80,6 @@ void keyPressed(){
   if (key == 'd') displace();
   if (key == 'h') {horizontal_slicer(); delay(30);}
   if( key == 'e') image(img, 0, 0);
-  if( key == 's') save(BUILD + " |"+ millis() + ".jpg");
+  if( key == 's') save(BUILD + "__"+ millis() + ".jpg");
+  if( key == 'c') corrosion();
 }
