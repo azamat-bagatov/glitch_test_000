@@ -1,18 +1,18 @@
 PImage img;
 
-String BUILD = "c.01";
+String BUILD = "c.02";
 
 void setup() {
   size(640, 320);
-  img = loadImage("onecru-l.jpg");  
-  //img = loadImage("crypt_onecru.jpg");  
+  //img = loadImage("onecru-l.jpg");  
+  img = loadImage("crypt_onecru.jpg");  
   img.resize(640,320);
   image(img, 0, 0);
 
 }
 
 void draw() {
-corrosion();
+for(int i = 0; i < 10; i++) corrosion();
 
 }
 
@@ -27,7 +27,7 @@ void corrosion(){
   int posY = (int) random(0,height);
   color col = img.get(posX,posY);
   //spread in a weighted random direction until random stop
-  while(random(0,100) < 95){
+  while(random(0,100) < 99){
     //move point at random
     posX += (int) random(-2,2);
     posY += (int) random(-2,2);
