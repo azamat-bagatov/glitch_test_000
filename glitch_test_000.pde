@@ -1,11 +1,11 @@
 PImage img;
 
-String BUILD = "c.03";
+String BUILD = "c.04";
 
 void setup() {
   size(640, 320);
-  img = loadImage("onecru-l.jpg");  
-  //img = loadImage("crypt_onecru.jpg");  
+  //img = loadImage("onecru-l.jpg");  
+  img = loadImage("crypt_onecru.jpg");  
   img.resize(640,320);
   image(img, 0, 0);
 
@@ -43,7 +43,7 @@ void corrosion(){
 int[] weighted_step(float wm[][]){
   wm[0][0] = 0;
   int step[] = {1,1};
-  if(random(0,100) < 50) step[0] = -1; step[1] = -1;
+  if(random(0,100) < 50) {step[0] = -1; step[1] = -1;}
   return step;
 }
 
