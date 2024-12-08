@@ -1,6 +1,6 @@
 PImage img;
 
-String BUILD = "c.06";
+String BUILD = "c.07";
 
 void setup() {
   size(640, 320);
@@ -12,29 +12,35 @@ void setup() {
 }
 
 void draw() {
-for(int i = 0; i < 10; i++) corrosion();
+  
+  for(int i = 0; i < 10; i++) corrosion();
 
 }
 
 void corrosion(){
+  
   float weight_matrix[][] = {
-    {1,  0,  0.25},
-    {0,  0,  0.5},
-    {0.25,  0.5  ,1}
+    {1.0,  0.1,  0.1},
+    {0.1,  0.0,  0.1},
+    {0.1,  0.1  ,1.0}
   };
+
+  
   //start at pixel
   int posX = (int) random(0,width);
   int posY = (int) random(0,height);
   color col = img.get(posX,posY);
   int step[] = weighted_step(weight_matrix);
   //spread in a weighted random direction until random stop
+  
   while(random(0,100) < 95){
+    
     //move point at random
     posX += step[0];
     posY += step[1];
-    
+    step = weighted_step(weight_matrix);
     //change direction occasionally 
-    if(randomRoll (0.1) ) step = weighted_step(weight_matrix);
+    //if(randomRoll (0.1) ) step = weighted_step(weight_matrix);
     
     //draw point
     stroke(col);
