@@ -1,6 +1,6 @@
 PImage img;
 
-String BUILD = "c.04";
+String BUILD = "c.05";
 
 void setup() {
   size(640, 320);
@@ -41,10 +41,21 @@ void corrosion(){
   
 }
 int[] weighted_step(float wm[][]){
-  wm[0][0] = 0;
-  int step[] = {1,1};
-  if(random(0,100) < 50) {step[0] = -1; step[1] = -1;}
-  return step;
+   int step[] = {0,0};
+   int i,j;
+   while(true){
+     i =(int)random(-2,2); 
+     j =(int)random(-2,2); 
+     if ( randomRoll( wm[i+1][j+1]) ){
+      step[0] = i; step[1] = j;
+      break;
+   }
+   }
+   return step;
+}
+boolean randomRoll(float p){
+  if(random(0,1) < p) return true;
+  else return false;
 }
 
 void displace(){
